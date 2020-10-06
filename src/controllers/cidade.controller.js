@@ -1,41 +1,41 @@
 const {
-  createCidades,
-  readCidades,
-  updateCidades,
-  deleteCidades
+  criarCidades,
+  listarCidades,
+  atualizarCidades,
+  deletarCidades
 } = require('../application/cidade')
 
 module.exports = {
-  read: async (req, res) => {
+  listar: async (req, res) => {
     try {
-      const cidades = await readCidades()
+      const cidades = await listarCidades()
       return res.status(200).json(cidades)
     } catch (error) {
       return res.sendStatus(500)
     }
   },
-  create: async (req, res) => {
+  criar: async (req, res) => {
     try {
       const { body } = req
-      const cidade = await createCidades(body)
+      const cidade = await criarCidades(body)
       return res.status(201).json(cidade)
     } catch (error) {
       return res.sendStatus(500)
     }
   },
-  update: async (req, res) => {
+  atualizar: async (req, res) => {
     try {
       const { body } = req
-      const cidade = await updateCidades(body)
+      const cidade = await atualizarCidades(body)
       return res.status(200).json(cidade)
     } catch (error) {
       return res.sendStatus(500)
     }
   },
-  delete: async (req, res) => {
+  deletar: async (req, res) => {
     try {
       const { body: ids } = req
-      await deleteCidades(ids)
+      await deletarCidades(ids)
       return res.sendStatus(204)
     } catch (error) {
       return res.sendStatus(500)
