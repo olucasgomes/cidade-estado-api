@@ -13,7 +13,7 @@ const schema = new Schema(
       required: true,
       index: true
     },
-    estadoId: { 
+    estadoId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Dev'
     }
