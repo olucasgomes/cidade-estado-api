@@ -1,7 +1,7 @@
 const LOGGER = require('../../logger')([__filename].join())
 const Estado = require('../../models/Estado')
 
-module.exports = async (ids) => {
+module.exports = async ({ ids }) => {
   try {
     LOGGER.debug('Deletando estados no banco de dados...')
     await Estado.deleteMany({ _id: ids })

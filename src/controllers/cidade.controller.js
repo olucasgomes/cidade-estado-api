@@ -34,8 +34,8 @@ module.exports = {
   },
   deletar: async (req, res) => {
     try {
-      const { body: ids } = req
-      await deletarCidades(ids)
+      const { body } = req
+      await deletarCidades(body)
       return res.sendStatus(204)
     } catch (error) {
       return res.sendStatus(500)

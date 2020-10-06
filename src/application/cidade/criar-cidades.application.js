@@ -2,7 +2,7 @@ const LOGGER = require('../../logger')([__filename].join())
 const Cidade = require('../../models/Cidade')
 const Estado = require('../../models/Estado')
 
-module.exports = async ({ nome, abreviacao, estadoId }) => {
+module.exports = async ({ nome, estadoId }) => {
   let estado
   try {
     LOGGER.debug('Buscando o estado no banco de dados...')
@@ -23,11 +23,9 @@ module.exports = async ({ nome, abreviacao, estadoId }) => {
     LOGGER.debug('Criando uma cidade no banco de dados...')
     const cidade = await Cidade.create({
       nome,
-      abreviacao,
       estadoId: estado._id
     })
-    LOGGER.debug('Cidade criada com sucesso, nome: %s, abreviacao: %s',
-      cidade.nome, cidade.abreviacao)
+    LOGGER.debug('Cidade criada com sucesso, nome: %s: %s', cidade.nome)
     return cidade
   } catch (err) {
     LOGGER.error('Erro ao tentar criar uma cidade no banco de dados [%o]', err)

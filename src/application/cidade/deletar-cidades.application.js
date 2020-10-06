@@ -1,7 +1,7 @@
 const LOGGER = require('../../logger')([__filename].join())
 const Cidade = require('../../models/Cidade')
 
-module.exports = async (ids) => {
+module.exports = async ({ ids }) => {
   try {
     LOGGER.debug('Deletando cidades no banco de dados...')
     await Cidade.deleteMany({ _id: ids })

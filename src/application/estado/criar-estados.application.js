@@ -1,10 +1,13 @@
 const LOGGER = require('../../logger')([__filename].join())
 const Estado = require('../../models/Estado')
 
-module.exports = async ({ nome }) => {
+module.exports = async ({ nome, abreviacao }) => {
   try {
     LOGGER.debug('Criando uma estado no banco de dados...')
-    const estado = await Estado.create({ nome })
+    const estado = await Estado.create({
+      nome,
+      abreviacao
+    })
     LOGGER.debug('Estado criado com sucesso, nome: %s', estado.nome)
     return estado
   } catch (err) {

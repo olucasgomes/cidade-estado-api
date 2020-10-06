@@ -6,11 +6,7 @@ const schema = new Schema(
     nome: {
       type: String,
       required: true,
-      index: true
-    },
-    abreviacao: {
-      type: String,
-      required: true,
+      unique: true,
       index: true
     },
     estadoId: {
